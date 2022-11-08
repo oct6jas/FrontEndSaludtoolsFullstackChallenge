@@ -1,0 +1,52 @@
+.modal-header{
+    background-color: #5b7fb6;
+    color: white;
+}
+
+.stbutton {
+    border: none;
+    background: #5b7fb6;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    border-radius: 5px;
+    color: #fff;
+    line-height: 26px;
+    text-align: center;
+    padding: .7rem 2rem;
+    height: 50px;
+    text-transform: none;
+    font-size: 15px;
+    min-width: 45px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.16);
+    letter-spacing: 0;
+}
+
+.stlinkbutton {
+    border: none;
+    color: #5b7fb6;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: none;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: center;
+    margin-right: 25px;
+}
+
+.input-whith-icon input{
+    padding-left: 35px;
+
+}
+
+.input-whith-icon svg{
+    position: absolute;
+    top: 11px;
+    padding: -13px 2px;
+    left: 11px;
+    color: #737b83;
+   
+}
+
+.input-whith-icon{
+    position: relative;
+}

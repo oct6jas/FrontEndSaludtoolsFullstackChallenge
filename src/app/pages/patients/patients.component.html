@@ -1,0 +1,28 @@
+<div class="container">
+
+    <button type="button" class="btn btn-danger" (click)="createPatient('Crear Paciente')">Crear Paciente</button>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Género</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let patient of patients">
+          <tr>
+            <td>{{patient.name}}</td>
+            <td>{{patient.lastName}}</td>
+            <td>{{patient.birthDay}}</td>
+            <td>{{patient.gender}}</td>
+            <td><button type="button" (click)="prescriptionPatient(patient.id)"></button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+</div>
+

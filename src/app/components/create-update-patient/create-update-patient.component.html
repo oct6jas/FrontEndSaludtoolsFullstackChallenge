@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit()" [formGroup]="CreateUpdatePatientForm">
+        <div class="input-whith-icon">
+        <input type="text" formControlName="name" class="form-control" placeholder="Nombre" maxlength="100"
+            [class.is-invalid]="(CreateUpdatePatientForm.get('name').touched && CreateUpdatePatientForm.get('name').invalid) || showClass" />
+            <i class="fa fa-user"></i>
+        <div *ngIf="form.name.errors" class="invalid-feedback">
+            <div >El nombre es obligatorio</div>
+        </div>
+    </div>
+        <br>
+        <div class="input-whith-icon">
+        <input type="text" formControlName="lastName" class="form-control" placeholder="Apellido" maxlength="100"
+            [class.is-invalid]="(CreateUpdatePatientForm.get('lastName').touched && CreateUpdatePatientForm.get('lastName').invalid) || showClass2" />
+            <i class="fa fa-lock"></i>
+        <div *ngIf="form.lastName.errors" class="invalid-feedback">
+            <div >El apellido es obligatorio</div>
+        </div>
+    </div>
+        <br>
+        <div class="input-whith-icon">
+            <input type="text" formControlName="birthDay" class="form-control" placeholder="Fecha de nacimiento dd/MM/aaaa" maxlength="10"
+                [class.is-invalid]="(CreateUpdatePatientForm.get('birthDay').touched && CreateUpdatePatientForm.get('birthDay').invalid) || showClass3" />
+                <i class="fa fa-user"></i>
+            <div *ngIf="form.birthDay.errors" class="invalid-feedback">
+                <div >La Fecha de nacimiento es obligatoria</div>
+            </div>
+        </div>
+            <br>
+            <div class="input-whith-icon">
+                <input list="genderOptions" id="exampleDataList" formControlName="gender" class="form-control" placeholder="Genero" maxlength="10"
+                    [class.is-invalid]="(CreateUpdatePatientForm.get('gender').touched && CreateUpdatePatientForm.get('gender').invalid) || showClass4" />
+                    <datalist id="genderOptions">
+                        <option>Femenino</option>
+                        <option>Masculino</option>
+                      </datalist>
+                    <i class="fa fa-user"></i>
+                <div *ngIf="form.gender.errors" class="invalid-feedback">
+                    <div >El genero es obligatorio</div>
+                </div>
+            </div>
+                <br>
+        <div class="modal-footer">
+            <button class="stlinkbutton" type="reset" (click)="onReset()">Reset</button>
+            <button class="stbutton">Enviar</button>
+        </div>
+    </form>
+</div>

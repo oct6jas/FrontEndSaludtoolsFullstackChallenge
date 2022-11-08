@@ -1,0 +1,13 @@
+nav.navbar.fixed-top.bg-dark{
+    background-color:#06192E !important;
+}
+
+.navbar-brand img{
+    height: 40px;
+    display: inline-block !important;
+    vertical-align: text-bottom !important;
+}
+
+a.navbar-brand{
+    color: rgb(255, 255, 255);
+}
