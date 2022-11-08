@@ -10,15 +10,24 @@ import { CreateUpdatePatientComponent } from 'src/app/components/create-update-p
 })
 export class PatientsComponent implements OnInit {
 
-  @Input() patients: any;
+  patients: any;
+  response: any;
+  actualPage: number =1;
+  disabledShowPrevious: boolean = true;
+  disabledShowNext: boolean = true;
+  totalPages: number;
 
   constructor(private patientsService: PatientsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.patientsService.getAllPatientByFilter('', '').subscribe(
       resp => {
-         this.patients = resp;
-         this.patients = this.patients.content;
+         this.response = resp;
+         this.patients = this.response.content;
+         this.patientsService.page = (this.actualPage -1).toString();
+          this.totalPages = this.response.totalPages
+          this.showPrevious();
+          this.showNext();
       }
     )
   }
@@ -30,5 +39,33 @@ export class PatientsComponent implements OnInit {
 
   prescriptionPatient(id:number){
     console.log("entro", id)
+  }
+
+  previous(){
+    this.actualPage = this.actualPage -1;
+    this.patientsService.page = (this.actualPage -1).toString();
+    this.ngOnInit()
+  }
+
+  next(){
+    this.actualPage = this.actualPage +1;
+    this.patientsService.page = (this.actualPage -1).toString();
+    this.ngOnInit()
+  }
+
+  showPrevious(){
+    if (this.actualPage == 1){
+      this.disabledShowPrevious = false;
+    } else {
+      this.disabledShowPrevious = true;
+    }
+  }
+
+  showNext(){
+    if (this.actualPage == this.totalPages || this.actualPage > this.totalPages ){
+      this.disabledShowNext = false;
+    } else {
+      this.disabledShowNext = true;
+    }
   }
 }

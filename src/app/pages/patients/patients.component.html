@@ -23,6 +23,20 @@
         </tbody>
       </table>
 
+      <div class="modal-footer">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" [ngClass]="disabledShowPrevious ? '' : 'disabled'">
+              <a class="page-link pointer-link" (click)="previous()">Anterior</a>
+            </li>
+            <li class="page-item"><a class="page-link">{{actualPage}}</a></li>
+            <li class="page-item" [ngClass]="disabledShowNext ? '' : 'disabled'">
+              <a class="page-link pointer-link" (click)="next()">Siguiente</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
 
 </div>
 
