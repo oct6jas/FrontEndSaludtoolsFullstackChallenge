@@ -21,7 +21,11 @@
             <td>{{patient.lastName}}</td>
             <td>{{patient.birthDay}}</td>
             <td>{{patient.gender}}</td>
-            <td><button type="button" class="btn btn-danger" (click)="prescriptionPatient(patient.id)">Prescribir</button></td>
+            <td><button type="button" class="btn btn-danger">
+              <a class="nav-link" routerLinkActive="active" routerLink="/prescription/{{patient.id}}">
+              <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+              Prescribir
+          </a></button></td>
             <td><button type="button" class="btn btn-primary" (click)="updatePatient('Actualizar Paciente', patient.id)">Editar</button></td>
             <td><button type="button" class="btn btn-dark" (click)="deletePatient(patient.id)">Borrar</button></td>
           </tr>

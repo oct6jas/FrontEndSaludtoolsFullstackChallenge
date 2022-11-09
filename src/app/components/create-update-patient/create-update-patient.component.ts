@@ -45,7 +45,6 @@ export class CreateUpdatePatientComponent implements OnInit {
           this.form.lastName.setValue(this.resp.lastName);
           this.form.birthDay.setValue(this.resp.birthDay);
           this.form.gender.setValue(this.resp.gender);
-          console.log(this.resp.gender)
         },
         (error) => {
           const modalRef = this.modalService.open(MessageComponent);

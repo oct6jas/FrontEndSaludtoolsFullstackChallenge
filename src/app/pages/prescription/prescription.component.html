@@ -1,0 +1,41 @@
+<div class="container">
+
+    <button type="button" class="btn btn-danger" (click)="createPrescription('Crear Prescripción')">Crear Prescripción</button>
+
+    <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Medicina</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let prescription of prescription">
+            <tr>
+              <td>{{prescription.createDate}}</td>
+              <td>{{prescription.medicineName}}</td>
+              <td><button type="button" class="btn btn-primary" (click)="updatePrescription('Actualizar Paciente', prescription.id)">Editar</button></td>
+              <td><button type="button" class="btn btn-dark" (click)="deletePrescription(prescription.id)">Borrar</button></td>
+            </tr>
+          </tbody>
+
+    </table>
+    </div>
+
+      <div class="modal-footer">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" [ngClass]="disabledShowPrevious ? '' : 'disabled'">
+              <a class="page-link pointer-link" (click)="previous()">Anterior</a>
+            </li>
+            <li class="page-item"><a class="page-link">{{actualPage}}</a></li>
+            <li class="page-item" [ngClass]="disabledShowNext ? '' : 'disabled'">
+              <a class="page-link pointer-link" (click)="next()">Siguiente</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+</div>

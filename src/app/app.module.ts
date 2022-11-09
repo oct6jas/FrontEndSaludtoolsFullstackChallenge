@@ -11,6 +11,8 @@ import { CreateUpdatePatientComponent } from './components/create-update-patient
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './components/message/message.component';
 import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
+import { PrescriptionComponent } from './pages/prescription/prescription.component';
+import { CreateUpdatePrescriptionComponent } from './components/create-update-prescription/create-update-prescription.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DeleteEntityComponent } from './components/delete-entity/delete-entity.
     PatientsComponent,
     CreateUpdatePatientComponent,
     MessageComponent,
-    DeleteEntityComponent
+    DeleteEntityComponent,
+    PrescriptionComponent,
+    CreateUpdatePrescriptionComponent
   ],
   imports: [
     BrowserModule,

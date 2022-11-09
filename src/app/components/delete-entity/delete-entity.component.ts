@@ -14,14 +14,17 @@ export class DeleteEntityComponent implements OnInit {
   @Input() message: string;
   @Input() type: string;
   @Input() id: string;
+  @Input() patientId: string;
   entity = {
-    id:null
+    id:null,
+    patientId:null
   }
 
   constructor(public modal: NgbActiveModal, private modalService: NgbModal, private service: GeneralServicesService) { }
 
   ngOnInit(): void {
     this.entity.id = this.id;
+    this.entity.patientId = this.patientId
   }
 
   deleteEntity(){

@@ -53,10 +53,6 @@ export class PatientsComponent implements OnInit {
     modalRef.componentInstance.id = id;
   }
 
-  prescriptionPatient(id:number){
-    console.log("entro", id)
-  }
-
   previous(){
     this.actualPage = this.actualPage -1;
     this.patientsService.page = (this.actualPage -1).toString();
