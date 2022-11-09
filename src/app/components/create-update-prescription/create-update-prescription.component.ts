@@ -48,8 +48,6 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
     this.medicineService.getAllMedicineByFilter(this.patientId).subscribe(
       response => {
         this.resp = response;
-
-        console.log(this.resp)
       },
       (error) => {
         const modalRef = this.modalService.open(MessageComponent);

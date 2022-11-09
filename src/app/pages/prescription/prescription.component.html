@@ -1,6 +1,13 @@
 <div class="container">
 
     <button type="button" class="btn btn-danger" [disabled]="!validateCreate" (click)="createPrescription('Crear Prescripción')">Crear Prescripción</button>
+
+    <button type="button" class="btn btn-info">
+      <a class="nav-link" routerLinkActive="active" routerLink="/home">
+      <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+      Regresar a Pacientes
+  </a></button>
+
     <div class="table-responsive">
     <table class="table table-hover">
         <thead>
