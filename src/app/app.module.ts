@@ -8,7 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PatientsComponent } from './pages/patients/patients.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUpdatePatientComponent } from './components/create-update-patient/create-update-patient.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './components/message/message.component';
 import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
 import { PrescriptionComponent } from './pages/prescription/prescription.component';
@@ -31,6 +31,7 @@ import { CreateUpdatePrescriptionComponent } from './components/create-update-pr
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

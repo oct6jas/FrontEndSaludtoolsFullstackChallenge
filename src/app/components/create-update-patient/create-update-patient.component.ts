@@ -84,13 +84,7 @@ export class CreateUpdatePatientComponent implements OnInit {
       name: this.form.name.value,
       lastName: this.form.lastName.value,
       birthDay: this.form.birthDay.value,
-      genderId: null,
-    }
-
-    if(this.form.gender.value === "Femenino"){
-      patient.genderId = 1;
-    } else  if(this.form.gender.value === "Masculino"){
-      patient.genderId = 2;
+      genderId: this.form.gender.value,
     }
 
     if(this.patientId != null || this.patientId != undefined ){

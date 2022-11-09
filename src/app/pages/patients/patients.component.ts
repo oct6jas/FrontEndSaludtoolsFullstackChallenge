@@ -18,11 +18,12 @@ export class PatientsComponent implements OnInit {
   disabledShowPrevious: boolean = true;
   disabledShowNext: boolean = true;
   totalPages: number;
+  @Input() searchTex:string = "";
 
   constructor(private patientsService: PatientsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.patientsService.getAllPatientByFilter('', '').subscribe(
+    this.patientsService.getAllPatientByFilter(this.searchTex, '').subscribe(
       resp => {
          this.response = resp;
          this.patients = this.response.content;
@@ -79,5 +80,11 @@ export class PatientsComponent implements OnInit {
     } else {
       this.disabledShowNext = true;
     }
+  }
+
+  search(){
+    console.log(this.searchTex)
+    this.ngOnInit()
+
   }
 }

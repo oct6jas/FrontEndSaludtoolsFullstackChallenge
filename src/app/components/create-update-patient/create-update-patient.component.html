@@ -32,14 +32,12 @@
         </div>
             <br>
             <div class="input-whith-icon">
-                <input list="genderOptions" id="exampleDataList" formControlName="gender" class="form-control" placeholder="Genero" maxlength="10"
-                    [class.is-invalid]="(CreateUpdatePatientForm.get('gender').touched && CreateUpdatePatientForm.get('gender').invalid) || showClass4" />
-                    <datalist id="genderOptions">
-                        <option>Femenino</option>
-                        <option>Masculino</option>
-                      </datalist>
-                    <i class="fa fa-user"></i>
-                <div *ngIf="form.gender.errors" class="invalid-feedback">
+                <select formControlName="gender" class="form-select" aria-label="Default select example"
+                [class.is-invalid]="(CreateUpdatePatientForm.get('gender').touched && CreateUpdatePatientForm.get('gender').invalid) || showClass4" >
+                    <option value="1">Femenino</option>
+                    <option value="2">Masculino</option>
+                  </select>
+                  <div *ngIf="form.gender.errors" class="invalid-feedback">
                     <div >El genero es obligatorio</div>
                 </div>
             </div>

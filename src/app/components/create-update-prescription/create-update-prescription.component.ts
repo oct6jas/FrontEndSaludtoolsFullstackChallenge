@@ -31,7 +31,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
       },
     );
 
-    if(!this.prescriptionId === null || !this.prescriptionId === undefined){
+
     this.prescriptionService.getPrescriptionById(this.patientId, this.prescriptionId).subscribe(
       response => {
         this.resp = response;
@@ -43,7 +43,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
         modalRef.componentInstance.message = error.error.menssage;
       }
     );
-    }
+ 
 
     this.medicineService.getAllMedicineByFilter(this.patientId).subscribe(
       response => {
