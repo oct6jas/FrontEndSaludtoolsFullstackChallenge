@@ -25,4 +25,20 @@ export class PatientsService {
                                                                                                                                                                            
     return this.http.post(url, patientDto);
   }
+
+  updatePatient(patientDto: Object){
+
+    let url:string = 'http://localhost:8080/patient/update';
+                                                                                                                                                                           
+    return this.http.put(url, patientDto);
+  }
+
+  getPatientById(patientId:string){
+
+    let url:string = 'http://localhost:8080/patient/byid';
+                                                                                                                                                                           
+    return this.http.get(url, {
+   
+      params:{patientId:patientId}});
+  }
 }

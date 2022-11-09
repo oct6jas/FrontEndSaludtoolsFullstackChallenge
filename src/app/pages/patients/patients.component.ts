@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PatientsService } from 'src/app/services/patients.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUpdatePatientComponent } from 'src/app/components/create-update-patient/create-update-patient.component';
+import { MessageComponent } from 'src/app/components/message/message.component';
+import { DeleteEntityComponent } from 'src/app/components/delete-entity/delete-entity.component';
 
 @Component({
   selector: 'app-patients',
@@ -35,6 +37,20 @@ export class PatientsComponent implements OnInit {
   createPatient(title){
     const modalRef = this.modalService.open(CreateUpdatePatientComponent);
     modalRef.componentInstance.title = title;
+  }
+
+  updatePatient(title, id){
+    const modalRef = this.modalService.open(CreateUpdatePatientComponent);
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.patientId = id;
+  }
+
+  deletePatient(id){
+    const modalRef = this.modalService.open(DeleteEntityComponent);
+    modalRef.componentInstance.title = "Borrar Paciente";
+    modalRef.componentInstance.message = "Desea borrar el paciente con id: " + id;
+    modalRef.componentInstance.type = "patient";
+    modalRef.componentInstance.id = id;
   }
 
   prescriptionPatient(id:number){

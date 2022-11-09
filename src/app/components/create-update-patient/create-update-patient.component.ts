@@ -12,6 +12,8 @@ import { MessageComponent } from '../message/message.component';
 export class CreateUpdatePatientComponent implements OnInit {
 
   @Input() title: string;
+  @Input() patientId: string;
+  resp: any;
 
 
 
@@ -33,8 +35,25 @@ export class CreateUpdatePatientComponent implements OnInit {
         birthDay:["", Validators.required],
         gender:["", Validators.required]
       },
-
     );
+
+    if(this.patientId != null){
+      this.patientsService.getPatientById(this.patientId).subscribe(
+        response => {
+          this.resp = response;
+          this.form.name.setValue(this.resp.name);
+          this.form.lastName.setValue(this.resp.lastName);
+          this.form.birthDay.setValue(this.resp.birthDay);
+          this.form.gender.setValue(this.resp.gender);
+          console.log(this.resp.gender)
+        },
+        (error) => {
+          const modalRef = this.modalService.open(MessageComponent);
+          modalRef.componentInstance.title = "Error en datos del paciente";
+          modalRef.componentInstance.message = error.error.menssage;
+        }
+      );
+    }
   }
 
 
@@ -62,12 +81,12 @@ export class CreateUpdatePatientComponent implements OnInit {
     }
 
     let patient = {
+      id: this.patientId || null,
       name: this.form.name.value,
       lastName: this.form.lastName.value,
       birthDay: this.form.birthDay.value,
       genderId: null,
     }
-
 
     if(this.form.gender.value === "Femenino"){
       patient.genderId = 1;
@@ -75,6 +94,16 @@ export class CreateUpdatePatientComponent implements OnInit {
       patient.genderId = 2;
     }
 
+    if(this.patientId != null || this.patientId != undefined ){
+      this.updatePatient (patient);
+    } else {
+      this.createPatient(patient);
+    }
+
+    this.submitted = true;
+  }
+
+  createPatient(patient){
     this.patientsService.createPatient(patient).subscribe(
       response => {
         this.modal.dismiss();
@@ -90,8 +119,24 @@ export class CreateUpdatePatientComponent implements OnInit {
       }
 
     )
+  }
 
-    this.submitted = true;
+  updatePatient(patient){
+    this.patientsService.updatePatient(patient).subscribe(
+      response => {
+        this.modal.dismiss();
+        const modalRef = this.modalService.open(MessageComponent);
+        modalRef.componentInstance.title = "Paciente Actualizado";
+        modalRef.componentInstance.message = "Paciente Actualizado con exito";
+        modalRef.componentInstance.reload = true;
+      },
+      (error) => {
+        const modalRef = this.modalService.open(MessageComponent);
+        modalRef.componentInstance.title = "Error Actualizando paciente";
+        modalRef.componentInstance.message = error.error.menssage;
+      }
+
+    )
   }
 
   onReset() {

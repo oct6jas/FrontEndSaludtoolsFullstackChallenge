@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUpdatePatientComponent } from './components/create-update-patient/create-update-patient.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './components/message/message.component';
+import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MessageComponent } from './components/message/message.component';
     NavbarComponent,
     PatientsComponent,
     CreateUpdatePatientComponent,
-    MessageComponent
+    MessageComponent,
+    DeleteEntityComponent
   ],
   imports: [
     BrowserModule,
