@@ -19,6 +19,15 @@ export class PrescriptionService {
       params:{page: this.page,  patientId:patientId}});
   }
 
+  getValidatePrescriptionCreate(patientId:string){
+
+    let url:string = 'http://localhost:8080/prescription/create/validate';
+                                                                                                                                                                           
+    return this.http.get(url, {
+   
+      params:{page: this.page,  patientId:patientId}});
+  }
+
   createPrescription(prescriptionDto: Object){
 
     let url:string = 'http://localhost:8080/prescription/create';

@@ -19,10 +19,21 @@ export class PrescriptionComponent implements OnInit {
   disabledShowPrevious: boolean = true;
   disabledShowNext: boolean = true;
   totalPages: number;
+  validateCreate: boolean;
 
   constructor(private modalService: NgbModal, private route: ActivatedRoute, private prescriptionService: PrescriptionService) { }
 
   ngOnInit(): void {
+
+    this.prescriptionService.getValidatePrescriptionCreate(this.patientId).subscribe(
+      resp => {
+         this.response = resp;
+         this.validateCreate = this.response
+      }
+    )
+
+
+
     this.prescriptionService.getAllPatientByFilter(this.patientId).subscribe(
       resp => {
          this.response = resp;
@@ -33,9 +44,6 @@ export class PrescriptionComponent implements OnInit {
           this.showNext();
       }
     )
-   
-
-
   }
 
   createPrescription(title){

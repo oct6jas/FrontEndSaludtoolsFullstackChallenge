@@ -1,7 +1,6 @@
 <div class="container">
 
-    <button type="button" class="btn btn-danger" (click)="createPrescription('Crear Prescripción')">Crear Prescripción</button>
-
+    <button type="button" class="btn btn-danger" [disabled]="!validateCreate" (click)="createPrescription('Crear Prescripción')">Crear Prescripción</button>
     <div class="table-responsive">
     <table class="table table-hover">
         <thead>

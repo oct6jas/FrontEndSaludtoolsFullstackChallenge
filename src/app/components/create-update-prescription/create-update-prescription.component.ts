@@ -67,7 +67,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
     let prescription = {
       id: null,
       patientId: this.patientId,
-      medicineId: medicine.id
+      medicineId: medicine ? medicine.id : null
     }
 
     if(prescription.id != null || prescription.id != undefined ){
