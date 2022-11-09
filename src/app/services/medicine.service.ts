@@ -8,7 +8,7 @@ export class MedicineService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPatientByFilter(patientId:string){
+  getAllMedicineByFilter(patientId:string){
 
     let url:string = 'http://localhost:8080/medicine/filter/rule';
                                                                                                                                                                            

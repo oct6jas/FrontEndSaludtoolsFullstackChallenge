@@ -30,11 +30,9 @@ export class PrescriptionComponent implements OnInit {
          this.response = resp;
          this.validateCreate = this.response
       }
-    )
+    );
 
-
-
-    this.prescriptionService.getAllPatientByFilter(this.patientId).subscribe(
+    this.prescriptionService.getAllPresciptionByFilter(this.patientId).subscribe(
       resp => {
          this.response = resp;
          this.prescription = this.response.content;
@@ -43,7 +41,7 @@ export class PrescriptionComponent implements OnInit {
           this.showPrevious();
           this.showNext();
       }
-    )
+    );
   }
 
   createPrescription(title){
@@ -54,7 +52,10 @@ export class PrescriptionComponent implements OnInit {
   }
 
   updatePrescription(title, id){
-
+    const modalRef = this.modalService.open(CreateUpdatePrescriptionComponent);
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.patientId = this.patientId;
+    modalRef.componentInstance.prescriptionId = id;
   }
 
   deletePrescription(id){

@@ -14,6 +14,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
 
   @Input() title: string;
   @Input() patientId: string;
+  @Input() prescriptionId:string;
 
   CreateUpdatePrescriptionForm!: FormGroup;
   submitted = false;
@@ -30,7 +31,21 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
       },
     );
 
-    this.medicineService.getAllPatientByFilter(this.patientId).subscribe(
+    if(!this.prescriptionId === null || !this.prescriptionId === undefined){
+    this.prescriptionService.getPrescriptionById(this.patientId, this.prescriptionId).subscribe(
+      response => {
+        this.resp = response;
+        this.form.medicine.setValue(this.resp.medicineName);
+      },
+      (error) => {
+        const modalRef = this.modalService.open(MessageComponent);
+        modalRef.componentInstance.title = "Error en datos de la prescripcion";
+        modalRef.componentInstance.message = error.error.menssage;
+      }
+    );
+    }
+
+    this.medicineService.getAllMedicineByFilter(this.patientId).subscribe(
       response => {
         this.resp = response;
 
@@ -65,7 +80,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
     let medicine = this.resp.find(element => element.name === this.form.medicine.value);
 
     let prescription = {
-      id: null,
+      id: this.prescriptionId,
       patientId: this.patientId,
       medicineId: medicine ? medicine.id : null
     }
@@ -94,7 +109,22 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
     )
   }
 
-  updatePrescription(prescription){}
+  updatePrescription(prescription){
+    this.prescriptionService.updatePrescription(prescription).subscribe(
+      response => {
+        this.modal.dismiss();
+        const modalRef = this.modalService.open(MessageComponent);
+        modalRef.componentInstance.title = "Actualizacion de prescripción";
+        modalRef.componentInstance.message = "Prescripción Actualizada con exito";
+        modalRef.componentInstance.reload = true;
+      },
+      (error) => {
+        const modalRef = this.modalService.open(MessageComponent);
+        modalRef.componentInstance.title = "Error actualizando prescripcion";
+        modalRef.componentInstance.message = error.error.menssage;
+      }
+    )
+  }
 
 
 
