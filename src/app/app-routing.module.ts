@@ -4,9 +4,9 @@ import { PatientsComponent } from './pages/patients/patients.component';
 import { PrescriptionComponent } from './pages/prescription/prescription.component';
 
 const routes: Routes = [
-  {path: 'home' , component: PatientsComponent},
+  {path: '' , component: PatientsComponent},
   {path: 'prescription/:patientId' , component: PrescriptionComponent},
-  {path: '**' , pathMatch:'full', redirectTo: 'home'}
+  {path: '**' , pathMatch:'full', redirectTo: ''}
 ];
 
 @NgModule({
