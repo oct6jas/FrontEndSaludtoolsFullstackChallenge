@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Config } from 'src/Config';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +8,11 @@ export class PrescriptionService {
 
   page: string = "0";
 
-  constructor(private http: HttpClient, private config : Config) { }
+  constructor(private http: HttpClient) { }
 
   getAllPresciptionByFilter(patientId:string){
 
-    let url:string = this.config.backendService + '/prescription/filter/patient';
+    let url:string = 'http://54.81.151.7:8080/prescription/filter/patient';
                                                                                                                                                                            
     return this.http.get(url, {
    
@@ -22,7 +21,7 @@ export class PrescriptionService {
 
   getValidatePrescriptionCreate(patientId:string){
 
-    let url:string = this.config.backendService + '/prescription/create/validate';
+    let url:string = 'http://54.81.151.7:8080/prescription/create/validate';
                                                                                                                                                                            
     return this.http.get(url, {
    
@@ -31,7 +30,7 @@ export class PrescriptionService {
 
   getPrescriptionById(patientId:string, prescriptionId:string){
 
-    let url:string = this.config.backendService + '/prescription/byid';
+    let url:string = 'http://54.81.151.7:8080/prescription/byid';
                                                                                                                                                                            
     return this.http.get(url, {
    
@@ -40,14 +39,14 @@ export class PrescriptionService {
 
   createPrescription(prescriptionDto: Object){
 
-    let url:string = this.config.backendService + '/prescription/create';
+    let url:string = 'http://54.81.151.7:8080/prescription/create';
                                                                                                                                                                            
     return this.http.post(url, prescriptionDto);
   }
 
   updatePrescription(prescriptionDto: Object){
 
-    let url:string = this.config.backendService + '/prescription/update';
+    let url:string = 'http://54.81.151.7:8080/prescription/update';
                                                                                                                                                                            
     return this.http.put(url, prescriptionDto);
   }
