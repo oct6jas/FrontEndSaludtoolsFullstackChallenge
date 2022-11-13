@@ -15,6 +15,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
   @Input() title: string;
   @Input() patientId: string;
   @Input() prescriptionId:string;
+  @Input() allMedicineForPatient: any;
 
   CreateUpdatePrescriptionForm!: FormGroup;
   submitted = false;
@@ -22,7 +23,7 @@ export class CreateUpdatePrescriptionComponent implements OnInit {
   showClass: boolean = false;
   resp: any;
 
-  constructor(public modal: NgbActiveModal, private modalService: NgbModal, private formBuilder: FormBuilder, private medicineService: MedicineService, private prescriptionService: PrescriptionService) { }
+  constructor(public modal: NgbActiveModal, private modalService: NgbModal, private formBuilder: FormBuilder, private prescriptionService: PrescriptionService) { }
 
   ngOnInit(): void {
     this.CreateUpdatePrescriptionForm = this.formBuilder.group(
@@ -35,7 +36,7 @@ if(this.prescriptionId === null){
     this.prescriptionService.getPrescriptionById(this.patientId, this.prescriptionId).subscribe(
       response => {
         this.resp = response;
-        this.form.medicine.setValue(this.resp.medicineName);
+        this.form.medicine.setValue(this.resp.id);
       },
       (error) => {
         const modalRef = this.modalService.open(MessageComponent);
@@ -45,17 +46,6 @@ if(this.prescriptionId === null){
     );
 }
  
-
-    this.medicineService.getAllMedicineByFilter(this.patientId).subscribe(
-      response => {
-        this.resp = response;
-      },
-      (error) => {
-        const modalRef = this.modalService.open(MessageComponent);
-        modalRef.componentInstance.title = "Error al encontrar los medicamentos";
-        modalRef.componentInstance.message = error.error.menssage;
-      }
-    );
   }
 
   get form() {
@@ -76,12 +66,10 @@ if(this.prescriptionId === null){
       return;
     }
 
-    let medicine = this.resp.find(element => element.name === this.form.medicine.value);
-
     let prescription = {
       id: this.prescriptionId,
       patientId: this.patientId,
-      medicineId: medicine ? medicine.id : null
+      medicineId: this.form.medicine.value
     }
 
     if(prescription.id != null || prescription.id != undefined ){

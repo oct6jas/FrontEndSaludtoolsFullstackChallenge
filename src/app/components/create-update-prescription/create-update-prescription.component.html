@@ -4,19 +4,19 @@
 </div>
 <div class="modal-body">
     <form (ngSubmit)="onSubmit()" [formGroup]="CreateUpdatePrescriptionForm">
-            <div class="input-whith-icon">
-                <input list="medicineOptions" id="exampleDataList" formControlName="medicine" class="form-control" placeholder="Medicina a prescribir"
-                    [class.is-invalid]="(CreateUpdatePrescriptionForm.get('medicine').touched && CreateUpdatePrescriptionForm.get('medicine').invalid) || showClass" />
-                    <datalist id="medicineOptions">
-                    <div *ngFor="let medicine of resp">
-                        <option>{{medicine.name}}</option>
-                    </div>
-                    </datalist>
-                <div *ngIf="form.medicine.errors" class="invalid-feedback">
-                    <div >Seleccionar una medicina es obligatorio</div>
-                </div>
+
+        <div class="input-whith-icon">
+            <select required formControlName="medicine" class="form-select" aria-label="Default select example"
+            [class.is-invalid]="(CreateUpdatePrescriptionForm.get('medicine').touched && CreateUpdatePrescriptionForm.get('medicine').invalid) || showClass" >
+                <option value="">Seleccione un medicamento</option>
+                <option *ngFor="let medicine of allMedicineForPatient" value={{medicine.id}}>{{medicine.name}}</option>
+              </select>
+              <div *ngIf="form.medicine.errors" class="invalid-feedback">
+                <div >Seleccionar una medicina es obligatorio</div>
             </div>
-                <br>
+        </div>
+        
+        <br>
         <div class="modal-footer">
             <button class="stlinkbutton" type="reset" (click)="onReset()">Reset</button>
             <button class="stbutton">Enviar</button>

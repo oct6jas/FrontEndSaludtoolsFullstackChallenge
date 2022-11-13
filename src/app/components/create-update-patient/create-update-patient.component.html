@@ -34,6 +34,7 @@
             <div class="input-whith-icon">
                 <select formControlName="gender" class="form-select" aria-label="Default select example"
                 [class.is-invalid]="(CreateUpdatePatientForm.get('gender').touched && CreateUpdatePatientForm.get('gender').invalid) || showClass4" >
+                    <option value="">Seleccione un género</option>
                     <option value="1">Femenino</option>
                     <option value="2">Masculino</option>
                   </select>
