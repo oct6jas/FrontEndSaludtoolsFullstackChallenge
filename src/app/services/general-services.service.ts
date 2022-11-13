@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class GeneralServicesService {
 
   deletePatient(type, entity){
 
-    let url:string = 'http://54.81.151.7:8080/' + type + '/delete';
+    let url:string = environment.server + type + '/delete';
                                                                                                                                                                            
     return this.http.put(url, entity);
   }

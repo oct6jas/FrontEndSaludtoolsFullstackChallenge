@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class MedicineService {
 
   getAllMedicineByFilter(patientId:string){
 
-    let url:string = 'http://54.81.151.7:8080/medicine/filter/rule';
+    let url:string = environment.server + 'medicine/filter/rule';
                                                                                                                                                                            
     return this.http.get(url, {
    

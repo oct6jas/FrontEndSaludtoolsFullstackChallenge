@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PrescriptionService {
 
   getAllPresciptionByFilter(patientId:string){
 
-    let url:string = 'http://54.81.151.7:8080/prescription/filter/patient';
+    let url:string = environment.server + 'prescription/filter/patient';
                                                                                                                                                                            
     return this.http.get(url, {
    
@@ -21,7 +22,7 @@ export class PrescriptionService {
 
   getValidatePrescriptionCreate(patientId:string){
 
-    let url:string = 'http://54.81.151.7:8080/prescription/create/validate';
+    let url:string = environment.server + 'prescription/create/validate';
                                                                                                                                                                            
     return this.http.get(url, {
    
@@ -30,7 +31,7 @@ export class PrescriptionService {
 
   getPrescriptionById(patientId:string, prescriptionId:string){
 
-    let url:string = 'http://54.81.151.7:8080/prescription/byid';
+    let url:string = environment.server + 'prescription/byid';
                                                                                                                                                                            
     return this.http.get(url, {
    
@@ -39,14 +40,14 @@ export class PrescriptionService {
 
   createPrescription(prescriptionDto: Object){
 
-    let url:string = 'http://54.81.151.7:8080/prescription/create';
+    let url:string = environment.server + 'prescription/create';
                                                                                                                                                                            
     return this.http.post(url, prescriptionDto);
   }
 
   updatePrescription(prescriptionDto: Object){
 
-    let url:string = 'http://54.81.151.7:8080/prescription/update';
+    let url:string = environment.server + 'prescription/update';
                                                                                                                                                                            
     return this.http.put(url, prescriptionDto);
   }
