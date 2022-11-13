@@ -1,55 +1,79 @@
 <div class="container">
 
-    <button type="button" class="btn btn-danger" (click)="createPatient('Crear Paciente')">Crear Paciente</button>
+  <div class="row">
 
-    <div class="row">
-    <input type="text" (keyup)="search()" [(ngModel)]="searchTex" class="form-control form-search" placeholder="Buscar..."/>
-    </div>
-    <div class="table-responsive">
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Fecha de nacimiento</th>
-            <th scope="col">Género</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let patient of patients">
-          <tr>
-            <td>{{patient.name}}</td>
-            <td>{{patient.lastName}}</td>
-            <td>{{patient.birthDay}}</td>
-            <td>{{patient.gender}}</td>
-            <td><button type="button" class="btn btn-danger">
-              <a class="nav-link" routerLinkActive="active" routerLink="/prescription/{{patient.id}}">
-              <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
-              Prescribir
-          </a></button></td>
-            <td><button type="button" class="btn btn-primary" (click)="updatePatient('Actualizar Paciente', patient.id)">Editar</button></td>
-            <td><button type="button" class="btn btn-dark" (click)="deletePatient(patient.id)">Borrar</button></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col">
+
+      <button type="button" class="btn btn-danger" (click)="createPatient('Crear Paciente')">Crear Paciente</button>
     </div>
 
-      <div class="modal-footer">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item" [ngClass]="disabledShowPrevious ? '' : 'disabled'">
-              <a class="page-link pointer-link" (click)="previous()">Anterior</a>
-            </li>
-            <li class="page-item"><a class="page-link">{{actualPage}}</a></li>
-            <li class="page-item" [ngClass]="disabledShowNext ? '' : 'disabled'">
-              <a class="page-link pointer-link" (click)="next()">Siguiente</a>
-            </li>
-          </ul>
-        </nav>
+    <input type="text" (keyup)="search()" [(ngModel)]="searchTex" class="col form-control form-search"
+      placeholder="Buscar..." />
+
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="" checked
+        (change)="onChange($event)">
+        <label class="form-check-label" for="inlineRadio1">Ambos</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1"
+        (change)="onChange($event)">
+        <label class="form-check-label" for="inlineRadio2">Femenino</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="2"
+        (change)="onChange($event)">
+        <label class="form-check-label" for="inlineRadio3">Masculino</label>
+      </div>
+    </div>
+
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Fecha de nacimiento</th>
+          <th scope="col">Género</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let patient of patients">
+        <tr>
+          <td>{{patient.name}}</td>
+          <td>{{patient.lastName}}</td>
+          <td>{{patient.birthDay}}</td>
+          <td>{{patient.gender}}</td>
+          <td><button type="button" class="btn btn-danger">
+              <a class="nav-link" routerLinkActive="active" routerLink="/prescription/{{patient.id}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                Prescribir
+              </a></button></td>
+          <td><button type="button" class="btn btn-primary"
+              (click)="updatePatient('Actualizar Paciente', patient.id)">Editar</button></td>
+          <td><button type="button" class="btn btn-dark" (click)="deletePatient(patient.id)">Borrar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-footer">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="disabledShowPrevious ? '' : 'disabled'">
+          <a class="page-link pointer-link" (click)="previous()">Anterior</a>
+        </li>
+        <li class="page-item"><a class="page-link">{{actualPage}}</a></li>
+        <li class="page-item" [ngClass]="disabledShowNext ? '' : 'disabled'">
+          <a class="page-link pointer-link" (click)="next()">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
 
 </div>
-
